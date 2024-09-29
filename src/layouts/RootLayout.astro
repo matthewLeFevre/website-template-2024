@@ -1,0 +1,25 @@
+---
+import TagManagerHead from "../components/SEO/TagManagerHead.astro";
+import TagManagerBody from "../components/SEO/TagManagerBody.astro";
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <TagManagerHead />
+    <meta charset='UTF-8' />
+    <meta name='description' content={description} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel='canonical' href={canonicalURL} />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <TagManagerBody />
+    <main><slot /></main>
+  </body>
+</html>
